@@ -10,4 +10,4 @@ print("Welcome to smoothie-matic 2.0")
 another = "Y"
 while another == "Y":
     make_smoothie()
-    another = input("How about another(Y/N)? ")
+    another = input("How about another(Y/N)? ").title()

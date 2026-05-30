@@ -4,22 +4,37 @@ def main():
         print("Valid")
     else:
         print("Invalid")
-
-
+        
 def is_valid(s):
     p = list(s)
-    if 6 < len(list(p)) < 2:
+    if len(list(p)) <2 or len(list(p)) >6:
         return False
     for i in s[0:2]:
         if i.isalpha == True:
             return True
-    elif i in s[0:1] == 0:
-        return False
     elif numinchar(s) == False:
+        return True
+    elif nspclchr(s) == True:
         return True
     
 def numinchar(s):
+    s = list(s)
+    nums = '0123456789'
+    p = list(nums)
+    
+            
+            
+def nspclchr(s):
     p = list(s)
+    spcl = ['!','@','#','$','%','&','*']
+    for i in p:
+        if set(i).isdisjoint(spcl)
+        return True
+    else:
+        return False
+    
+# checks for no special characters
+    
     
 
 main()

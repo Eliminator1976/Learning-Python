@@ -16,9 +16,9 @@ while True:
         request = input("Item: ").title()
         if request in menu:
             y = y + float(menu[request])
-            print(f"${y}")
+            print(f"Total: ${y}")
         else:
-            print(f"${y}")
+            print(f"Total: ${y}")
             
         
     except EOFError:

@@ -10,8 +10,10 @@ months = [
     "September",
     "October",
     "November",
-    "December"
+    "December",
 ]
+
+
 def main():
     while True:
         date = input("Date: ").title()
@@ -28,39 +30,56 @@ def main():
         else:
             print("unsupported format error")
             break
-            
+
+
 def date_analog_handler(date):
     date = date.split(sep="/")
-    #becomes a list as ['MM','DD','YYYY']
-    if not date[0].startswith("0") or date[0].startswith("1"):
-        date[0] = date[0].replace(date[0],"0"+date[0])        
-    if not date[1].startswith("0") or date[1].startswith("1") or date[1].startswith("2") or date[1].startswith("3"):
-        date[1] = date[1].replace(date[1],"0"+date[1])
+    # becomes a list as ['MM','DD','YYYY']
+    
+    if int(date[0]) > 12 and int(date[1]) > 31:
+        return f"unpossible date 😭"
+    
+    if not date[0].startswith("0") and  not date[0].startswith("1"):
+        date[0] = date[0].replace(date[0], "0" + date[0])
+    if (
+        not date[1].startswith("0")
+        and not date[1].startswith("1")
+        and not date[1].startswith("2")
+        and not date[1].startswith("3")
+    ):
+        date[1] = date[1].replace(date[1], "0" + date[1])
     return f"{date[2]}-{date[0]}-{date[1]}"
+    
+
 
 # temp paste (# format = month day, year)
+
 
 def date_easy_handler(date):
     date = date.replace(",", "").split()
     # becomes a list as ['month', 'day', 'year']
-    for month in months:
-        if month == date[0]:
-            x = int(months.index(month)) + 1
-            date[0] = str(x)
-        else:
-            break
+    try:
+        x = months.index(date[0]) + 1
+        date[0] = str(x)
+    except ValueError:
+        return f"unknown month"
+        
     # month became a number without 0 formatting
-    if not date[0].startswith("0") or date[0].startswith("1"):
-        date[0] = date[0].replace(date[0],"0"+date[0])        
-    if not date[1].startswith("0") or date[1].startswith("1") or date[1].startswith("2") or date[1].startswith("3"):
-        date[1] = date[1].replace(date[1],"0"+date[1])
+    if int(date[1]) > 31:
+        return f"unpossible date 😭"
+    
+    if date[0].startswith("0") and not date[0].startswith("1"):
+        date[0] = date[0].replace(date[0], "0" + date[0])
+    if (
+        not date[1].startswith("0")
+        and not date[1].startswith("1")
+        and not date[1].startswith("2")
+        and not date[1].startswith("3")
+    ):
+        date[1] = date[1].replace(date[1], "0" + date[1])
     # month and date get 0 formatted
     return f"{date[2]}-{date[0]}-{date[1]}"
-    
-main()        
-    #YYYY-MM-DD required format
-    
-    
-    
-    
-    
+
+
+main()
+# YYYY-MM-DD required format

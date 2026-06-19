@@ -1,6 +1,6 @@
 import random
 
-
+print("Do Not Press enter midst game, it can break the Program!")
 def main():
     level = get_level()
 
@@ -69,3 +69,4 @@ def generate_integer(level):
 
 if __name__ == "__main__":
     main()
+meow = input("Press any key to exit!")
